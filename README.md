@@ -32,3 +32,4 @@
 - 初始化sql，只有一张表，在token-common项目的resouces下
 - redis只有在token-server中使用，因此，你是用的时候需要配置redis,如，配置host,密码等。
 - 要注意redis的备份文件dump.rdb所在的目录是否redis有权限写，否则，redis服务会报无权限持久化的错误。
+- `toekn-module-02`的测试包下，有已经写好的单元测试。
