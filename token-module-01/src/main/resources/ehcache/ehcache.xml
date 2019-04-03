@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+         updateCheck="false">
+    <!--默认的缓存策略，当找不到指定的缓存策略或者没有指定缓存策略，采用默认-->
+    <!--eternal:对象是否永久有效，一但设置了，timeout将不起作用。-->
+    <!--maxElementsInMemory:缓存最大数目，相当于map的key的个数-->
+    <!--overflowToDisk:是否保存到磁盘-->
+    <!--是否持久化磁盘缓存,当这个属性的值为true时,系统在初始化时会在磁盘中查找文件名为cache名称,后缀名为index的文件-->
+    <!--timeToIdleSeconds设置对象在失效前的允许闲置时间（单位：秒）。仅当eternal=false对象不是永久有效时使用，可选属性，默认值是0，也就是可闲置时间无穷大。-->
+    <!--timeToLiveSeconds缓存的过期时间，单位秒-->
+    <!--memoryStoreEvictionPolicy缓存满时的淘汰策略-->
+    <defaultCache
+            eternal="false"
+            maxElementsInMemory="1000"
+            overflowToDisk="false"
+            diskPersistent="false"
+            timeToIdleSeconds="0"
+            timeToLiveSeconds="600"
+            memoryStoreEvictionPolicy="LRU" />
+
+    <!-- 这里的 users 缓存空间是为了下面的 demo 做准备 -->
+    <cache
+            name="users"
+            eternal="false"
+            maxElementsInMemory="100"
+            overflowToDisk="false"
+            diskPersistent="false"
+            timeToIdleSeconds="0"
+            timeToLiveSeconds="300"
+            memoryStoreEvictionPolicy="LRU" />
+</ehcache>
