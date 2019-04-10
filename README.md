@@ -24,11 +24,12 @@
 - `token-server`：token服务模块，包含，token的创建，token的校验，重置有效时间，token的注销
 - `token-module-01`：服务的生产者，提供了一个根据id查询用户的接口，需要token
 - `token-module-02`：服务的调用者，提供了一个根据id查询用户的接口,该接口使用springcloud的ribbon+RestTemplate调用token-module-01
-
+- `token-hystrix-turbine`：hystrix-turbine对集群的监控 
 ------
 
 #### 注意事项 ####
 
-- 初始化sql，只有一张表，在token-common项目的resouces下
-- redis只有在token-server中使用，因此，你是用的时候需要配置redis,如，配置host,密码等。
+- 初始化sql，只有一张表，在`token-common`项目的resouces下
+- `redis`只有在`token-server`中使用，因此，你是用的时候需要配置redis,如，配置host,密码等。
 - 要注意redis的备份文件dump.rdb所在的目录是否redis有权限写，否则，redis服务会报无权限持久化的错误。
+- `token-hystrix-turbine`只会监控使用了hystrix的应用，`token-module-01`和`token-module-02`使用了hystrix
