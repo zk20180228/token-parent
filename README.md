@@ -5,7 +5,7 @@
 
 #### 技术依赖 ####
 
-- `Spring Boot(Cloud)`：项目基础架构
+- `Spring Boot(Cloud G.RS1)`：项目基础架构
 - `MyBatis||Mybatis-plus`：用于访问`MySQL`数据库 
 - `Redis`：用于存储token，和用户信息
 - `MD5`：用户密码使用MD5摘要存储

@@ -3,12 +3,15 @@ package cn.ctcc.token.module01;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+
 /**
  * @Author: zk
  * @Date: 2019/4/2 16:06
  * @Description: 模拟用户微服务
  */
 @EnableDiscoveryClient
+@EnableHystrix
 @SpringBootApplication
 public class TokenModule01Application {
 

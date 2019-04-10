@@ -64,7 +64,7 @@ public class TokenController {
                 String uuid=UUID.randomUUID().toString().replace("-","");
                 String token= SysConstant.REDIS_TOKEN_PREFIX+":"+uuid ;
                 redisTemplate.opsForValue().set(token,userJson,SysConstant.REDIS_TOKEN_EXPIRE_TIME, TimeUnit.SECONDS);
-
+                System.out.println(uuid);
                 return BackResult.ok(uuid);
             }else{
                 return BackResult.build(500,"用户名或密码不正确！");

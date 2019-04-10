@@ -3,6 +3,8 @@ package cn.ctcc.token.module01.interceptors;
 import cn.ctcc.token.common.beans.User;
 import cn.ctcc.token.common.util.BackResult;
 import cn.ctcc.token.common.util.JSONUtils;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.client.RestTemplate;
@@ -31,6 +33,7 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
     @Resource
     private RestTemplate restTemplate;
 
+    @HystrixCommand(fallbackMethod = "preHandleFallbackMethod",raiseHystrixExceptions = {HystrixException.RUNTIME_EXCEPTION})
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
@@ -59,5 +62,21 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
        String json = JSONUtils.toJson(result);
        response.getWriter().write(json);
        return false;
+    }
+
+
+/**
+   * @Author: zk
+   * @Date: 2019/4/10 15:39
+   * @Return:
+   * @Throws
+   * @Description: 默认的fallback方法可以不带参数，但是返回值一定要和所作用的方法的返回值一致
+   */
+    public boolean preHandleFallbackMethod(HttpServletRequest request, HttpServletResponse response, Object handler)throws Exception{
+
+        BackResult result = BackResult.build(500, "access not allowed,services is unUseAble!");
+        String json = JSONUtils.toJson(result);
+        response.getWriter().write(json);
+        return false;
     }
 }

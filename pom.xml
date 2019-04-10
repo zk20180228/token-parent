@@ -15,6 +15,8 @@
         <module>token-module-01</module>
         <!--Restful服务一-->
         <module>token-module-02</module>
+        <!--Hystrix监控-->
+        <module>token-hystrix-turbine</module>
     </modules>
 
     <parent>
